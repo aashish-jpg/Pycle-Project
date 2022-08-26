@@ -15,7 +15,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(MONGODB_URI || "mongodb://localhost/pycle");
+mongoose.connect("mongodb://localhost:27017/pycle",{
+  useFindAndModify:true
+});
 
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected");
